@@ -25,7 +25,7 @@ namespace ConfuserEx_Unpacker.Protections
             {
                 if (methods.IsReuseSlot)
                 {
-                    if (methods.IsPrivateScope)
+                    if (methods.IsPrivateScope && methods.HasBody && methods.Body.HasInstructions)
                     {
                         ins = methods.Body.Instructions[methods.Body.Instructions.Count - 2];
                         if (ins.OpCode == OpCodes.Callvirt || ins.OpCode == OpCodes.Call ||
